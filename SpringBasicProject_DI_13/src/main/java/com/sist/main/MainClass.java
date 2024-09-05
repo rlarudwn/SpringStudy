@@ -1,0 +1,24 @@
+package com.sist.main;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.sist.dao.EmpDAO;
+import com.sist.vo.EmpVO;
+
+public class MainClass {
+	public static void main(String[] args) {
+		ApplicationContext app=new ClassPathXmlApplicationContext("application-*.xml");
+		EmpDAO dao=app.getBean("dao", EmpDAO.class);
+		List<EmpVO> list=dao.empListData();
+		for(EmpVO vo:list) {
+			System.out.println(vo.getEmpno());
+			System.out.println(vo.getEname());
+			System.out.println(vo.getSvo().getGrade());
+			System.out.println(vo.getDvo().getDname());
+			System.out.println("===============================");
+		}
+	}
+}

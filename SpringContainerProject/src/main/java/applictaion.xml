@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="sa" class="com.sist.spring4.Sawon" p:sabun="1" p:name="김경주" p:dept="개발부" scope="prototype"/>
+	<bean id="sa2" class="com.sist.spring4.Sawon" c:sabun="2" c:name="김경쥬" c:dept="인사부"/>
+</beans>
