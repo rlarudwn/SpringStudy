@@ -44,4 +44,19 @@ public interface RecipeMapper {
 	
 	@Select("SELECT no, title, poster FROM recipe WHERE no=#{no}")
 	public RecipeVO recipeCookieData(int no);
+	
+	@Select("SELECT no, poster, title, chef, num "
+			+ "FROM (SELECT no, poster, title, chef, rownum as num "
+			+ "FROM (SELECT /*+INDEX_ASC(recipe recipe_no_pk)*/ no, poster, title, chef "
+			+ "FROM recipe WHERE no IN (SELECT no FROM recipe INTERSECT SELECT no FROM recipedetail) AND title LIKE '%'||#{fd}||'%')) "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
+	public List<RecipeVO> recipeFindListData(Map map);
+	
+	@Select("SELECT COUNT(*) FROM recipe WHERE no IN (SELECT no FROM recipe INTERSECT SELECT no FROM recipedetail) AND title LIKE '%'||#{fd}||'%'")
+	public int recipeFindRowCount(Map map);
+	
+	@Select("SELECT no, title, rownum "
+			+ "FROM (SELECT no, title FROM recipe ORDER BY hit DESC) "
+			+ "WHERE rownum<=5")
+	public List<RecipeVO> recipeTop5ListData();
 }

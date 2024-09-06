@@ -7,11 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.a {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
+
 </style>
 </head>
 <body>
@@ -46,25 +42,6 @@
 			</ul>
 		</div>
 	</div>
-	<h3>방문한 레시피</h3>
-	<a href="../recipe/cookieAll.do" class="btn btn-xs btn-primary">더보기</a>
-	<div class="row">
-		<c:if test="${size>0}">
-			<c:forEach var="rvo" items="${rList }" varStatus="i">
-				<c:if test="${i.index<6 }">
-					<div class="col-sm-2">
-						<div class="text-center">
-							<div class="thumbnail">
-								<a href="../recipe/detailBefore.do?no=${rvo.no}"><img src="${rvo.poster}"></a>
-							</div>
-						</div>
-					</div>
-				</c:if>
-			</c:forEach>
-		</c:if>
-		<c:if test="${size==0 }">
-			<h3>방문한 레시피가 없습니다</h3>
-		</c:if>
-	</div>
+	<jsp:include page="../recipe/recipeCookie.jsp"/>
 </body>
 </html>

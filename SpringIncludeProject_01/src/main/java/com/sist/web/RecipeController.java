@@ -1,6 +1,7 @@
 package com.sist.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -146,5 +147,36 @@ public class RecipeController {
 			}
 		}
 		return "redirect:../main/main.do";
+	}
+	@RequestMapping("find.do")
+	public String recipeFind(String fd, String page, Model model) {
+		if(page==null)
+			page="1";
+		if(fd==null)
+			fd="";
+		int curPage=Integer.parseInt(page);
+		Map map=new HashMap();
+		int rowSize=20;
+		int start=(curPage-1)*rowSize+1;
+		int end=start+rowSize-1;
+		map.put("start", start);
+		map.put("end", end);
+		map.put("fd", fd);
+		List<RecipeVO> list=rService.recipeFindListData(map);
+		int count=rService.recipeFindRowCount(map);
+		int totalPage=(int)(Math.ceil(count/20.0));
+		int startPage=(curPage-1)/10*10+1;
+		int endPage=startPage+10-1;
+		if(endPage>totalPage)
+			endPage=totalPage;
+		model.addAttribute("count", count);
+		model.addAttribute("curPage", curPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("list", list);
+		model.addAttribute("fd", fd);
+		model.addAttribute("main_jsp", "../recipe/find.jsp");
+		return "main/main";
 	}
 }

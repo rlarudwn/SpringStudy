@@ -31,4 +31,7 @@ public class FoodDAO {
 		return mapper.foodDetailData(fno);
 	}
 
+	public List<FoodVO> foodTop5ListData(){
+		return mapper.foodTop5ListData();
+	}
 }

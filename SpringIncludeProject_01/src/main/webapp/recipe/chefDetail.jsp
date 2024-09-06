@@ -56,5 +56,6 @@
 			</ul>
 		</div>
 	</div>
+	<jsp:include page="../recipe/recipeCookie.jsp"/>
 </body>
 </html>

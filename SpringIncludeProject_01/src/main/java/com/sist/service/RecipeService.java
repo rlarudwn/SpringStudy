@@ -13,4 +13,8 @@ public interface RecipeService {
 	public int chefRecipeRowCount(Map map);
 	public List<RecipeVO> chefRecipeListData(Map map);
 	public RecipeVO recipeCookieData(int no);
+	public List<RecipeVO> recipeFindListData(Map map);
+	public int recipeFindRowCount(Map map);
+	public List<RecipeVO> recipeTop5ListData();
+	
 }	

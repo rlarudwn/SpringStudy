@@ -10,4 +10,5 @@ public interface FoodService {
 	public int foodTotalPage();
 	public FoodVO foodDetail(int fno);
 	public FoodVO foodDetailData(int fno);
+	public List<FoodVO> foodTop5ListData();
 }

@@ -1,6 +1,5 @@
 package com.sist.main;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import java.util.List;
 import java.util.Map;
@@ -12,14 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sist.dao.PokeDAO;
+import com.sist.service.PokeService;
 import com.sist.vo.PokeVO;
 
 @Controller
 @RequestMapping("poke/")
 public class PokeController {
 	@Autowired
-	PokeDAO dao;
+	PokeService pService;
 	@GetMapping("list.do")
 	public String pokeList(String page, String ss, Model model) {
 		if(page==null)
@@ -33,10 +32,10 @@ public class PokeController {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("ss", ss);
-		List<PokeVO> list=dao.pokeListData(map);
+		List<PokeVO> list=pService.pokeListData(map);
 		int startPage=(curPage-1)/10*10+1;
 		int endPage=startPage+10-1;
-		int totalPage=dao.pokeTotalPage(map);
+		int totalPage=pService.pokeTotalPage(map);
 		if(endPage>totalPage)
 			endPage=totalPage;
 		model.addAttribute("list", list);
@@ -49,7 +48,7 @@ public class PokeController {
 	}
 	@GetMapping("detail.do")
 	public String pokeDetail(int no, Model model) {
-		PokeVO vo=dao.pokeDetailData(no);
+		PokeVO vo=pService.pokeDetailData(no);
 		model.addAttribute("detail", vo);
 		model.addAttribute("main_jsp", "../poke/detail.jsp");
 		return "main/main";

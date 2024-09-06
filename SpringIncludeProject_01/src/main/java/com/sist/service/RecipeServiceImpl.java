@@ -41,4 +41,17 @@ public class RecipeServiceImpl implements RecipeService{
 	public RecipeVO recipeCookieData(int no) {
 		return dao.recipeCookieData(no);
 	}
+	@Override
+	public List<RecipeVO> recipeFindListData(Map map) {
+		return dao.recipeFindListData(map);
+	}
+	@Override
+	public int recipeFindRowCount(Map map) {
+		return dao.recipeFindRowCount(map);
+	}
+	@Override
+	public List<RecipeVO> recipeTop5ListData() {
+		return dao.recipeTop5ListData();
+	}
+	
 }

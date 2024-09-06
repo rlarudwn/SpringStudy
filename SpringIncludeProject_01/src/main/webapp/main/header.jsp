@@ -28,10 +28,10 @@
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> 스토어<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">전체 상품</a></li>
+						<li><a href="../goods/list.do">전체 상품</a></li>
 						<li><a href="#">상품 찾기</a></li>
 					</ul></li>
-				<li><a href="#">자유게시판</a></li>
+				<li><a href="../replyboard/list.do">자유게시판</a></li>
 				<li><a href="#">Page 3</a></li>
 			</ul>
 		</div>

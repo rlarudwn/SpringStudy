@@ -27,4 +27,8 @@ public class FoodServiceImpl implements FoodService{
 	public FoodVO foodDetailData(int fno) {
 		return dao.foodDetailData(fno);
 	}
+	@Override
+	public List<FoodVO> foodTop5ListData() {
+		return dao.foodTop5ListData();
+	}
 }

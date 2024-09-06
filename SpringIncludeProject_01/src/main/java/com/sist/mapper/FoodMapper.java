@@ -24,4 +24,9 @@ public interface FoodMapper {
 	
 	@Update("UPDATE project_food_house SET hit=hit+1 WHERE fno=#{fno}")
 	public void foodHitIncrement(int fno);
+	
+	@Select("SELECT fno, name, rownum "
+			+ "FROM (SELECT fno, name FROM project_food_house ORDER BY hit DESC) "
+			+ "WHERE rownum<=5")
+	public List<FoodVO> foodTop5ListData();
 }
