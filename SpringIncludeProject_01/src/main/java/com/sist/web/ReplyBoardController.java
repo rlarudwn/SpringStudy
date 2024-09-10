@@ -1,5 +1,6 @@
 package com.sist.web;
 
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,6 +49,7 @@ public class ReplyBoardController {
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("count", count);
 		model.addAttribute("list", list);
+		model.addAttribute("type", "관리자가 삭제한 게시물입니다");
 		model.addAttribute("main_jsp", "../replyboard/list.jsp");
 		model.addAttribute("today", new SimpleDateFormat("YYYY-MM-dd").format(new Date()));
 		return "main/main";
@@ -67,6 +69,30 @@ public class ReplyBoardController {
 		ReplyBoardVO vo=rbService.replyboardDetail(no);
 		model.addAttribute("detail", vo);
 		model.addAttribute("main_jsp", "../replyboard/detail.jsp");
+		return "main/main";
+	}
+	@GetMapping("update.do")
+	public String replyboardUpdate(int no, Model model) {
+		ReplyBoardVO vo=rbService.replyboardDetailData(no);
+		model.addAttribute("detail", vo);
+		model.addAttribute("main_jsp", "../replyboard/update.jsp");
+		return "main/main";
+	}
+	@GetMapping("reply.do")
+	public String replyboardReply(int no, Model model) {
+		model.addAttribute("no", no);
+		model.addAttribute("main_jsp", "../replyboard/reply.jsp");
+		return "main/main";
+	}
+	@PostMapping("replyOk.do")
+	public String replyboardReplyOk(int pno, ReplyBoardVO vo) {
+		rbService.replyboardReplyInsert(pno, vo);
+		return "redirect:../replyboard/list.do";
+	}
+	@GetMapping("delete.do")
+	public String replyboardDelete(int no, Model model) {
+		model.addAttribute("no", no);
+		model.addAttribute("main_jsp", "../replyboard/delete.jsp");
 		return "main/main";
 	}
 }

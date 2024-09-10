@@ -38,4 +38,19 @@ public class ReplyBoardServiceImpl implements ReplyBoardService{
 	public ReplyBoardVO replyboardDetailData(int no) {
 		return dao.replyboardDetailData(no);
 	}
+	
+	@Override
+	public String replyboardUpdate(ReplyBoardVO vo) {
+		return dao.replyboardUpdate(vo);
+	}
+
+	@Override
+	public void replyboardReplyInsert(int pno, ReplyBoardVO vo) {
+		dao.replyboardReplyInsert(pno, vo);
+	}
+
+	@Override
+	public String replyboardDelete(int no, String pwd) {
+		return dao.replyboardDelete(no, pwd);
+	}
 }

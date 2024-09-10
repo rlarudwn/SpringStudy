@@ -16,9 +16,9 @@
 </head>
 <body>
 	<div class="container">
-		<h3 class="text-center">글쓰기</h3>
+		<h3 class="text-center">답변</h3>
 		<div class="row">
-			<form action="../replyboard/insertOk.do" method="post">
+			<form action="../replyboard/replyOk.do" method="post">
 				<table class="table">
 					<tr>
 						<th class="text-right" width="20%">이름</th>
@@ -43,6 +43,7 @@
 						</td>
 					</tr>
 				</table>
+				<input type="hidden" name="pno" value="${no}">
 			</form>
 		</div>
 	</div>

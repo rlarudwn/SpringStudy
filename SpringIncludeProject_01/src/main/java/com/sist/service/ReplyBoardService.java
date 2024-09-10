@@ -10,4 +10,7 @@ public interface ReplyBoardService {
 	public int replyboardRowCount();
 	public ReplyBoardVO replyboardDetail(int no);
 	public ReplyBoardVO replyboardDetailData(int no);
+	public String replyboardUpdate(ReplyBoardVO vo);
+	public void replyboardReplyInsert(int pno, ReplyBoardVO vo);
+	public String replyboardDelete(int no, String pwd);
 }
