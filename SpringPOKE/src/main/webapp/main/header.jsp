@@ -21,7 +21,7 @@
         </ul>
       </li>
       <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="../member/login.do">LogIn</a></li>
     </ul>
   </div>
 </nav>

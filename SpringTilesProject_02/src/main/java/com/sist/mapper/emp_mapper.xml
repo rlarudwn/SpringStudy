@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.EmpMapper">
+	<resultMap type="com.sist.vo.EmpVO" id="empMap">
+		<result property="dvo.dname" column="dname" />
+		<result property="dvo.deptno" column="deptno" />
+		<result property="dvo.loc" column="loc" />
+		<result property="svo.grade" column="grade" />
+	</resultMap>
+	<select id="empListData" resultMap="empMap">
+		SELECT empno, ename, job, TO_CHAR(hiredate, 'YYYY-MM-DD') as dbday, sal, dname, loc, grade
+		FROM emp JOIN dept ON emp.deptno=dept.deptno
+		JOIN salgrade ON sal BETWEEN losal AND hisal
+	</select>
+</mapper>
