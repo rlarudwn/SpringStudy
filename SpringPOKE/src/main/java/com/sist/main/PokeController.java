@@ -15,38 +15,15 @@ import com.sist.service.PokeService;
 import com.sist.vo.PokeVO;
 
 @Controller
-@RequestMapping("poke/")
 public class PokeController {
 	@Autowired
 	PokeService pService;
-	@GetMapping("list.do")
-	public String pokeList(String page, String ss, Model model) {
-		if(page==null)
-			page="1";
-		if(ss==null)
-			ss="";
-		int curPage=Integer.parseInt(page);
-		int start=(curPage-1)*12+1;
-		int end=start+12-1;
-		Map map=new HashedMap();
-		map.put("start", start);
-		map.put("end", end);
-		map.put("ss", ss);
-		List<PokeVO> list=pService.pokeListData(map);
-		int startPage=(curPage-1)/10*10+1;
-		int endPage=startPage+10-1;
-		int totalPage=pService.pokeTotalPage(map);
-		if(endPage>totalPage)
-			endPage=totalPage;
-		model.addAttribute("list", list);
-		model.addAttribute("curPage", curPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		model.addAttribute("totalPage", totalPage);
-		model.addAttribute("main_jsp", "../poke/list.jsp");
+	@GetMapping("poke/list.do")
+	public String pokeList(Model model) {
+		model.addAttribute("main_jsp", "../poke/list2.jsp");
 		return "main/main";
 	}
-	@GetMapping("detail.do")
+	@GetMapping("poke/detail.do")
 	public String pokeDetail(int no, Model model) {
 		PokeVO vo=pService.pokeDetailData(no);
 		model.addAttribute("detail", vo);

@@ -25,4 +25,14 @@ public class PokeServiceImpl implements PokeService {
 	public PokeVO pokeDetailData(int no) {
 		return dao.pokeDetailData(no);
 	}
+
+	@Override
+	public List<PokeVO> pokeTypeListData(Map map) {
+		return dao.pokeTypeListData(map);
+	}
+
+	@Override
+	public int pokeTypeTotalPage(Map map) {
+		return dao.pokeTypeTotalPage(map);
+	}
 }

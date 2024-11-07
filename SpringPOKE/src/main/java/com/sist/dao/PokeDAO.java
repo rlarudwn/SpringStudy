@@ -21,7 +21,16 @@ public class PokeDAO {
 		return mapper.pokeTotalPage(map);
 	}
 	
+	public List<PokeVO> pokeTypeListData(Map map){
+		return mapper.pokeTypeListData(map);
+	}
+	
+	public int pokeTypeTotalPage(Map map){
+		return mapper.pokeTypeTotalPage(map);
+	}
+	
 	public PokeVO pokeDetailData(int no) {
 		return mapper.pokeDetailData(no);
 	}
+	
 }

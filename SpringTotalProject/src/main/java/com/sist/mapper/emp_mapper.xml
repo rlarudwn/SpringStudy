@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.EmpMapper">
+	<select id="empFindListData" parameterType="hashmap" resultType="EmpVO">
+		SELECT empno, ename, deptno, job, sal, TO_CHAR(hiredate, 'YYYY-MM-DD') as dbday
+		FROM emp
+		WHERE ename IN
+		<foreach collection="array" item="name" open="(" close=")" separator=",">#{name}</foreach>
+	</select>
+	<select id="empFindOption" parameterType="hashmap" resultType="EmpVO">
+		SELECT empno, ename, deptno, job, sal, TO_CHAR(hiredate, 'YYYY-MM-DD') as dbday
+		FROM emp
+		<if test="fd!='ALL'">
+			WHERE ${fd} LIKE '%'||#{ss}||'%'
+		</if>
+	</select>
+</mapper>
